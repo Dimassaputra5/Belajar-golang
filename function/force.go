@@ -1,6 +1,9 @@
 package function
 
-import "math/rand"
+import (
+	"math/rand"
+	"strconv"
+)
 
 func Force(pass []byte) (string, int) {
 	p := []byte(pass)
@@ -27,4 +30,20 @@ func RandomPassword() [4]byte {
 		password[i] = byte(rand.Intn(256))
 	}
 	return password
+}
+
+func HundredFormat(num int) string {
+	str := strconv.Itoa(num)
+	length := len(str)
+	if length <= 3 {
+		return str
+	}
+	var result string
+	for i, digit := range str {
+		if (length-i)%3 == 0 && i != 0 {
+			result += ","
+		}
+		result += string(digit)
+	}
+	return result
 }
