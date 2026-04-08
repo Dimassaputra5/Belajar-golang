@@ -13,7 +13,8 @@ func Force(pass []byte) (string, int) {
 			for k := 0; k < 256; k++ {
 				for l := 0; l < 256; l++ {
 					iter++
-					if byte(i) == p[0] && byte(j) == p[1] && byte(k) == p[2] && byte(l) == p[3] {
+					if byte(i) == p[0] && byte(j) == p[1] &&
+						byte(k) == p[2] && byte(l) == p[3] {
 						return string([]byte{byte(i), byte(j), byte(k), byte(l)}), iter
 					}
 
@@ -32,7 +33,7 @@ func RandomPassword() [4]byte {
 	return password
 }
 
-func HundredFormat(num int) string {
+func ThousandFormat(num int) string {
 	str := strconv.Itoa(num)
 	length := len(str)
 	if length <= 3 {

@@ -13,7 +13,7 @@ func main() {
 	waktuMulai := time.Now()
 	result, count := function.Force(target[:])
 	waktuEksekusi := time.Since(waktuMulai)
-	fmt.Printf("Hasil brute force: %s dengan %s percobaan\n", result, function.HundredFormat(count))
+	fmt.Printf("Hasil brute force: %s dengan %s percobaan\n", result, function.ThousandFormat(count))
 
 	fmt.Printf("Waktu yang dibutuhkan: %s\n", waktuEksekusi)
 }
