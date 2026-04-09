@@ -25,10 +25,14 @@ func Force(pass []byte) (string, int) {
 	return "Not Found", iter
 }
 
-func RandomPassword() [4]byte {
-	var password [4]byte
-	for i := 0; i < 4; i++ {
-		password[i] = byte(rand.Intn(256))
+func RandomPassword(n string) []byte {
+	p, err := strconv.Atoi(n)
+	if err != nil {
+		panic(err)
+	}
+	var password []byte
+	for i := 0; i < p; i++ {
+		password = append(password, byte(rand.Intn(256)))
 	}
 	return password
 }
@@ -47,4 +51,26 @@ func ThousandFormat(num int) string {
 		result += string(digit)
 	}
 	return result
+}
+
+func Force5(pass []byte) (string, int) {
+	p := []byte(pass)
+	iter := 0
+	for i := 0; i < 256; i++ {
+		for j := 0; j < 256; j++ {
+			for k := 0; k < 256; k++ {
+				for l := 0; l < 256; l++ {
+					for m := 0; m < 256; m++ {
+						iter++
+						if byte(i) == p[0] && byte(j) == p[1] &&
+							byte(k) == p[2] && byte(l) == p[3] && byte(m) == p[4] {
+							return string([]byte{byte(i), byte(j), byte(k), byte(l), byte(m)}), iter
+						}
+
+					}
+				}
+			}
+		}
+	}
+	return "Not Found", iter
 }
